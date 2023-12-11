@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
-const mongoDBURL =
-  "mongodb+srv://hysenibujar:Mernstack123@merncamp.nusdfzg.mongodb.net/e-commerce";
+const mongoDBURL = process.env.mongoDBURL;
 
 mongoose.connect(mongoDBURL);
 
