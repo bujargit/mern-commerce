@@ -14,3 +14,11 @@ export const addToCart = (product, quantity) => (dispatch, getState) => {
     JSON.stringify(getState().addToCartReducer.cartItems)
   );
 };
+
+export const initializeCart = () => (dispatch) => {
+  const cartItems = localStorage.getItem("cartItems")
+    ? JSON.parse(localStorage.getItem("cartItems"))
+    : [];
+
+  dispatch({ type: "INITIALIZE_CART", payload: cartItems });
+};

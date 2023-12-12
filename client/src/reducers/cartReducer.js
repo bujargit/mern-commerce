@@ -18,6 +18,11 @@ export const addToCartReducer = (state = { cartItems: [] }, action) => {
           cartItems: [...state.cartItems, action.payload],
         };
       }
+    case "INITIALIZE_CART":
+      return {
+        ...state,
+        cartItems: action.payload,
+      };
 
     default:
       return state;

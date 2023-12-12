@@ -19,6 +19,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers";
+import { initializeCart } from "./actions/cartActions";
 
 const cartItems = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
@@ -29,8 +30,11 @@ const initialState = {
 };
 
 const store = configureStore(
-  { reducer: rootReducer, initialState },
+  { reducer: rootReducer },
+  initialState,
   composeWithDevTools()
 );
+
+store.dispatch(initializeCart());
 
 export default store;

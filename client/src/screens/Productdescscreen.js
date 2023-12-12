@@ -21,7 +21,7 @@ const Productdescscreen = () => {
 
   useEffect(() => {
     dispatch(getProductById(id));
-  }, []);
+  }, [dispatch, id]);
 
   return (
     <div className="container-fluid">
