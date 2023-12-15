@@ -24,6 +24,17 @@ export const addToCartReducer = (state = { cartItems: [] }, action) => {
         cartItems: action.payload,
       };
 
+    case "CHANGE_CART_ITEM_QUANTITY":
+      return {
+        ...state,
+        cartItems: action.payload,
+      };
+
+      case 'DELETE_FROM_CART': return {
+        ...state,
+        cartItems: state.cartItems.filter(item => {return item._id !==action.payload._id})
+      }
+
     default:
       return state;
   }

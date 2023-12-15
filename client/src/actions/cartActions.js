@@ -22,3 +22,24 @@ export const initializeCart = () => (dispatch) => {
 
   dispatch({ type: "INITIALIZE_CART", payload: cartItems });
 };
+
+export const changeCartItemQuantity =
+  (itemId, newQuantity) => (dispatch, getState) => {
+    const updatedCartItems = getState().addToCartReducer.cartItems.map((item) =>
+      item._id === itemId ? { ...item, quantity: newQuantity } : item
+    );
+
+    dispatch({ type: "CHANGE_CART_ITEM_QUANTITY", payload: updatedCartItems });
+
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+  };
+
+export const deleteFromCart = (item) => (dispatch, getState) => {
+  const updatedCartItems = getState().addToCartReducer.cartItems.filter(
+    (cartItem) => cartItem._id !== item._id
+  );
+
+  dispatch({ type: "DELETE_FROM_CART", payload: updatedCartItems });
+
+  localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+};

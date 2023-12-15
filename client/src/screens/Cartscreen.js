@@ -1,8 +1,18 @@
-import { useSelector } from "react-redux";
-// import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { changeCartItemQuantity, deleteFromCart } from "../actions/cartActions"; 
 
 const Cartscreen = () => {
+  const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.addToCartReducer);
+
+  const handleQuantityChange = (itemId, newQuantity) => {
+    dispatch(changeCartItemQuantity(itemId, newQuantity));
+  };
+
+  const handleDelete = (itemId) => {
+    dispatch(deleteFromCart({ _id: itemId })); 
+  };
+
   return (
     <div className="container">
       <div className="row mt-5 justify-content-center">
@@ -19,25 +29,28 @@ const Cartscreen = () => {
               </tr>
             </thead>
             <tbody>
-              {cartItems.map((item) => {
-                return (
-                  <tr>
-                    <td>{item.name}</td>
-                    <td>{item.price}</td>
-                    <td>
-                      <select value={item.quantity}>
-                        {[...Array(item.countInStock).keys()].map((x, i) => {
-                          return <option value={i + 1}>{i + 1}</option>;
-                        })}
-                      </select>
-                    </td>
-                    <td>{item.quantity * item.price}</td>
-                    <td>
-                      <i className="far fa-trash-alt"></i>
-                    </td>
-                  </tr>
-                );
-              })}
+              {cartItems.map((item) => (
+                <tr key={item._id}>
+                  <td>{item.name}</td>
+                  <td>{item.price}</td>
+                  <td>
+                    <select
+                      value={item.quantity}
+                      onChange={(e) => handleQuantityChange(item._id, parseInt(e.target.value))}
+                    >
+                      {[...Array(item.countInStock).keys()].map((x, i) => (
+                        <option key={i} value={i + 1}>
+                          {i + 1}
+                        </option>
+                      ))}
+                    </select>
+                  </td>
+                  <td>{item.quantity * item.price}</td>
+                  <td>
+                    <i className="far fa-trash-alt" onClick={() => handleDelete(item._id)}></i>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
