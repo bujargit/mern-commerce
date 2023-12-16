@@ -33,9 +33,10 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
     case "DELETE_FROM_CART":
       return {
         ...state,
-        cartItems: state.cartItems.filter((item) => {
-          return item._id !== action.payload._id;
-        }),
+        // cartItems: state.cartItems.filter((item) => {
+        //   return item._id !== action.payload._id;
+        // }),
+        cartItems: action.payload,
       };
 
     default:

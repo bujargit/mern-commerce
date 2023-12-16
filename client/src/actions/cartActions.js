@@ -34,16 +34,17 @@ export const changeCartItemQuantity =
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
-export const deleteFromCart = (item) => (dispatch) => {
-  dispatch({ type: "DELETE_FROM_CART", payload: item });
-};
-
-// export const deleteFromCart = (item) => (dispatch, getState) => {
-//   const updatedCartItems = getState().cartReducer.cartItems.filter(
-//     (cartItem) => cartItem._id !== item._id
-//   );
-
-//   dispatch({ type: "DELETE_FROM_CART", payload: updatedCartItems });
-
-//   localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+// export const deleteFromCart = (item) => (dispatch) => {
+//   dispatch({ type: "DELETE_FROM_CART", payload: item });
+//   localStorage.removeItem("cartItems", JSON.stringify("cartItems"));
 // };
+
+export const deleteFromCart = (itemId) => (dispatch, getState) => {
+  const updatedCartItems = getState().cartReducer.cartItems.filter(
+    (cartItem) => cartItem._id !== itemId._id
+  );
+
+  dispatch({ type: "DELETE_FROM_CART", payload: updatedCartItems });
+
+  localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+};
