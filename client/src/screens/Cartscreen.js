@@ -3,7 +3,7 @@ import { changeCartItemQuantity, deleteFromCart } from "../actions/cartActions";
 
 const Cartscreen = () => {
   const dispatch = useDispatch();
-  const { cartItems } = useSelector((state) => state.addToCartReducer);
+  const { cartItems } = useSelector((state) => state.cartReducer);
   const handleQuantityChange = (itemId, newQuantity) => {
     dispatch(changeCartItemQuantity(itemId, newQuantity));
   };

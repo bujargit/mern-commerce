@@ -1,4 +1,4 @@
-export const addToCartReducer = (state = { cartItems: [] }, action) => {
+export const cartReducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
       const allreadyexist = state.cartItems.find(
@@ -30,10 +30,13 @@ export const addToCartReducer = (state = { cartItems: [] }, action) => {
         cartItems: action.payload,
       };
 
-      case 'DELETE_FROM_CART': return {
+    case "DELETE_FROM_CART":
+      return {
         ...state,
-        cartItems: state.cartItems.filter(item => {return item._id !==action.payload._id})
-      }
+        cartItems: state.cartItems.filter((item) => {
+          return item._id !== action.payload._id;
+        }),
+      };
 
     default:
       return state;

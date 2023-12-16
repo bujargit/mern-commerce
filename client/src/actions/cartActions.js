@@ -11,7 +11,7 @@ export const addToCart = (product, quantity) => (dispatch, getState) => {
 
   localStorage.setItem(
     "cartItems",
-    JSON.stringify(getState().addToCartReducer.cartItems)
+    JSON.stringify(getState().cartReducer.cartItems)
   );
 };
 
@@ -25,7 +25,7 @@ export const initializeCart = () => (dispatch) => {
 
 export const changeCartItemQuantity =
   (itemId, newQuantity) => (dispatch, getState) => {
-    const updatedCartItems = getState().addToCartReducer.cartItems.map((item) =>
+    const updatedCartItems = getState().cartReducer.cartItems.map((item) =>
       item._id === itemId ? { ...item, quantity: newQuantity } : item
     );
 
@@ -34,12 +34,16 @@ export const changeCartItemQuantity =
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
-export const deleteFromCart = (item) => (dispatch, getState) => {
-  const updatedCartItems = getState().addToCartReducer.cartItems.filter(
-    (cartItem) => cartItem._id !== item._id
-  );
-
-  dispatch({ type: "DELETE_FROM_CART", payload: updatedCartItems });
-
-  localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+export const deleteFromCart = (item) => (dispatch) => {
+  dispatch({ type: "DELETE_FROM_CART", payload: item });
 };
+
+// export const deleteFromCart = (item) => (dispatch, getState) => {
+//   const updatedCartItems = getState().cartReducer.cartItems.filter(
+//     (cartItem) => cartItem._id !== item._id
+//   );
+
+//   dispatch({ type: "DELETE_FROM_CART", payload: updatedCartItems });
+
+//   localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+// };
