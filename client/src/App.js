@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Homescreen from "./screens/Homescreen";
 import Productdescscreen from "./screens/Productdescscreen";
 import Cartscreen from "./screens/Cartscreen";
+import Registerscreen from "./screens/Registerscreen";
+import Loginscreen from "./screens/Loginscreen";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Route path="/" element={<Homescreen />} exact />
         <Route path="/product/:id" element={<Productdescscreen />} exact />
         <Route path="/cart" element={<Cartscreen />} exact />
+        <Route path="/register" element={<Registerscreen />} exact />
+        <Route path="/login" element={<Loginscreen />} exact />
       </Routes>
     </div>
   );

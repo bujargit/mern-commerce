@@ -25,7 +25,7 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav mainnav-links">
               <li className="nav-item">
-                <Link className="nav-link" href="#">
+                <Link className="nav-link" to="/login">
                   Login
                 </Link>
               </li>
