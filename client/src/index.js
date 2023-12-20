@@ -4,10 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-// import { configureStore } from "@reduxjs/toolkit";
-// import { composeWithDevTools } from "redux-devtools-extension";
 import { Provider } from "react-redux";
-// import rootReducer from "./reducers";
+import 'bootstrap/dist/js/bootstrap.min.js'
 import store from "./store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
