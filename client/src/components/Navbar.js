@@ -28,17 +28,17 @@ const Navbar = () => {
             {currentUser ? (
               // <li>{currentUser.name}</li>
 
-              <div class="dropdown">
-                <button
+              <div className="dropdown">
+                <a
                   className="btn btn-secondary dropdown-toggle"
-                  type="button"
+                  role="button"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
                   Dropdown button
-                </button>
+                </a>
                 <div
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuButton"
