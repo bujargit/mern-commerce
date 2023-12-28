@@ -4,6 +4,8 @@ import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../actions/productActions";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
 
 const Homescreen = () => {
   // const getallproductsstate = useSelector((state) => state.getallproductsstate);
@@ -22,9 +24,9 @@ const Homescreen = () => {
     <div className="container py-3">
       <div className="row justify-content-start">
         {loading ? (
-          <h1>Loading...</h1>
+          <Loader />
         ) : error ? (
-          <h1>Something went wrong</h1>
+          <Error error="Something went wrong..." />
         ) : (
           products.map((product) => {
             return (

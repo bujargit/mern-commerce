@@ -6,7 +6,7 @@ export const getAllProducts = () => (dispatch) => {
   axios
     .get("/api/products/getallproducts")
     .then((res) => {
-      // console.log(res);     
+      // console.log(res);
       dispatch({ type: "GET_PRODUCTS_SUCCESS", payload: res.data });
     })
     .catch((err) => {
@@ -19,9 +19,9 @@ export const getProductById = (id) => (dispatch) => {
   dispatch({ type: "GET_PRODUCTBYID_REQUEST" });
 
   axios
-    .post("/api/products/getproductbyid", {id})
+    .post("/api/products/getproductbyid", { id })
     .then((res) => {
-      // console.log(res);     
+      // console.log(res);
       dispatch({ type: "GET_PRODUCTBYID_SUCCESS", payload: res.data });
     })
     .catch((err) => {
@@ -29,4 +29,3 @@ export const getProductById = (id) => (dispatch) => {
       dispatch({ type: "GET_PRODUCTBYID_FAILED", payload: err });
     });
 };
-

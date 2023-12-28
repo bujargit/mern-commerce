@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../actions/productActions";
 import { addToCart } from "../actions/cartActions";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
 
 const Productdescscreen = () => {
   const { id } = useParams();
@@ -25,15 +27,23 @@ const Productdescscreen = () => {
 
   return (
     <div className="container-fluid">
-      {product &&
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Error error="Something went wrong" />
+      ) : (
+        product &&
         product[0] &&
         product.map((product) => {
           return (
             <div key={product._id} className="row">
               {loading ? (
-                <h1>Loading...</h1>
+                <>
+                  <h1>Test</h1>
+                  <Loader />
+                </>
               ) : error ? (
-                <h1>Something went wrong</h1>
+                <Error error="Something went wrong" />
               ) : (
                 <>
                   <div className="col-md-6">
@@ -77,7 +87,8 @@ const Productdescscreen = () => {
               )}
             </div>
           );
-        })}
+        })
+      )}
     </div>
   );
 };

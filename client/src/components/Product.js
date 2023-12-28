@@ -9,7 +9,9 @@ import Rating from "react-rating";
 const Product = ({ product }) => {
   return (
     <Link to={`product/${product._id}`} className="text-decoration-none">
-      <img src={product.image} className="img-fluid" alt={product.name} />
+      <div className="text-center">
+        <img src={product.image} className="img-fluid" alt={product.name} />
+      </div>
       <h1>{product.name}</h1>
       <Rating
         initialRating={product.rating}

@@ -19,6 +19,8 @@ export const loginReducer = (state = {}, action) => {
       return { ...state, loading: false, success: true };
     case "USER_LOGIN_FAILED":
       return { ...state, loading: false, error: "Invalid Credentials" };
+    case "USER_LOGOUT":
+      return { ...state };
     default:
       return state;
   }
