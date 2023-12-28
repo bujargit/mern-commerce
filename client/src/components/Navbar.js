@@ -15,8 +15,8 @@ const Navbar = () => {
           </Link>
           <button
             className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
+            role="button"
+            data-bs-toggle="collapse"
             data-target="#navbarNav"
             aria-controls="navbarNav"
             aria-expanded="false"
@@ -26,19 +26,17 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             {currentUser ? (
-              // <li>{currentUser.name}</li>
-
               <div className="dropdown">
-                <a
+                <Link
                   className="btn btn-secondary dropdown-toggle"
                   role="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
                   Dropdown button
-                </a>
+                </Link>
                 <div
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuButton"
