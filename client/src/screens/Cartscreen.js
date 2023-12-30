@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { changeCartItemQuantity, deleteFromCart } from "../actions/cartActions";
+import Checkout from "../components/Checkout";
 
 const Cartscreen = () => {
   const dispatch = useDispatch();
@@ -65,9 +66,7 @@ const Cartscreen = () => {
           <hr />
           <h2 className="text-center">SubTotal: {subtotal} &#8364;</h2>
           <hr />
-          <div className="text-center p-3">
-            <button className="btn">PAY NOW</button>
-          </div>
+          <Checkout amount={subtotal} />
         </div>
       </div>
     </div>
