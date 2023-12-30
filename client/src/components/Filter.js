@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { filteredProducts } from "../actions/productActions";
+import { filterProducts } from "../actions/productActions";
 
 const Filter = () => {
   const [searchKey, setSearchKey] = useState("");
@@ -11,12 +11,12 @@ const Filter = () => {
 
   return (
     <div className="filter__wrapper">
-      <div className="row justify-content-center">
+      <div className="row justify-content-center my-3">
         <div className="col-md-2">
           <input
             value={searchKey}
             onChange={(e) => {
-              searchKey(e.target.value);
+              setSearchKey(e.target.value);
             }}
             type="text"
             placeholder="search products"
@@ -51,7 +51,7 @@ const Filter = () => {
           <button
             className="btn"
             onClick={() => {
-              dispatch(filteredProducts(searchKey, sort, category));
+              dispatch(filterProducts(searchKey, sort, category));
             }}
           >
             Filter

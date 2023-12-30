@@ -30,20 +30,22 @@ export const getProductById = (id) => (dispatch) => {
     });
 };
 
-export const filteredProducts = (searchKey, sortKey, category) => (dispatch) => {
+export const filterProducts = (searchKey, sortKey, category) => (dispatch) => {
   let filteredProducts;
   dispatch({ type: "GET_PRODUCTS_REQUEST" });
 
   axios
     .get("/api/products/getallproducts")
     .then((res) => {
+      filteredProducts = res.data;
+
       if (searchKey) {
         filteredProducts = res.data.filter((product) => {
           return product.name.toLowerCase().includes(searchKey);
         });
       }
       if (sortKey !== "popular") {
-        if (sortKey == "htl") {
+        if (sortKey === "htl") {
           filteredProducts = res.data.sort((a, b) => {
             return -a.price + b.price;
           });
