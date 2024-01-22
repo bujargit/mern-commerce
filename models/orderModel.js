@@ -4,22 +4,22 @@ const orderSchena = mongoose.Schema(
   {
     userid: {
       type: String,
-      require,
+      required: true,
     },
     name: {
       type: String,
-      type: require,
+      required: true,
     },
     email: {
       type: String,
-      require,
+      required: true,
     },
-    oserItems: [
+    orderItems: [
       {
-        name: { type: String, require },
-        quantity: { type: Number, require },
-        _id: { type: String, require },
-        price: { type: Number, require },
+        name: { type: String, required: true },
+        quantity: { type: Number, required: true },
+        _id: { type: String, required: true },
+        price: { type: Number, required: true },
       },
     ],
     shippingAddress: {

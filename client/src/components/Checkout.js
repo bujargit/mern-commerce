@@ -6,7 +6,7 @@ const Checkout = ({ amount }) => {
 
   const dispatch = useDispatch()
   const tokenHandler = (token) => {
-    // console.log(token);
+    console.log(token);
     dispatch(placeOrder(token, amount))
 
   };
